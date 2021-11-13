@@ -1,1 +1,1 @@
-# nodejs-2021-q4
+# RS School - NodeJS Course - 2021 Q4
