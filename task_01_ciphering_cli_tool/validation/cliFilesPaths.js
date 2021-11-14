@@ -1,8 +1,8 @@
-const fs = require('fs');
+const { existsSync } = require('fs');
 const { getCliOptionValue } = require('../utils/getCliOptionValue');
 const { isOptionExistsInCli } = require('../validation/cliOptions');
 
-const isFileExists = (filePath) => fs.existsSync(filePath);
+const isFileExists = (filePath) => existsSync(filePath);
 
 const validateFilePath = (cliOptions, cliParameters) => {
     const isOptionExistsInCliFlag = isOptionExistsInCli(cliOptions, cliParameters);
