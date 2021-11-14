@@ -1,3 +1,5 @@
+const { cliOptions } = require('../constants/cliParameters');
+
 const isOptionExistsInCli = (option, parameters) => {
     const { options } = option;
     return options.some(el => parameters.includes(el));
@@ -9,17 +11,17 @@ const isOptionDuplicateInCli = (option, parameters) => {
     return optionsEntryCount.reduce((acc, el) => (acc + el), 0) > 1;
 };
 
-const isRequiredConditionValid = (option, parameters) => {
+const isCliOptionRequiredConditionValid = (option, parameters) => {
     const { required } = option;
     return required ? isOptionExistsInCli(option, parameters) : true;
 };
 
-const validateOption = (option, parameters) => {
-    return isRequiredConditionValid(option, parameters) && !isOptionDuplicateInCli(option, parameters);
+const validateCliOption = (option, parameters) => {
+    return isCliOptionRequiredConditionValid(option, parameters) && !isOptionDuplicateInCli(option, parameters);
 };
 
-const validateCliOptions = (options, parameters) => {
-    return options.every(option => validateOption(option, parameters));
+const validateCliOptions = (cliParameters) => {
+    return Object.values(cliOptions).every(option => validateCliOption(option, cliParameters));
 };
 
 module.exports = {

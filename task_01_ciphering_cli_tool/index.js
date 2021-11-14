@@ -1,5 +1,6 @@
-const { cliOptions } = require('./constants/cliParameters');
-const { validateCliOptions } = require('./validation/cliParameters');
+const { validateCliOptions } = require('./validation/cliOptions');
+const { validateCliConfigValue } = require('./validation/cliConfigValue');
 
 const cliParameters = process.argv.slice(2);
-const isCliOptionsValid = validateCliOptions(cliOptions, cliParameters);
+const isCliOptionsValid = validateCliOptions(cliParameters);
+const isConfigValueValid = validateCliConfigValue(cliParameters);
