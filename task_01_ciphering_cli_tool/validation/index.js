@@ -2,7 +2,7 @@ const { validateCliOptions } = require('./cliOptions');
 const { validateCliConfigValue } = require('./cliConfigValue');
 const { validateFilePath } = require('./cliFilesPaths');
 const { cliOptions: { cliInputOption, cliOutputOption } } = require('../constants/cliParameters');
-const { CliOptionsValidateError, CliConfigValueValidateError, CliFilePathValidateError } = require('../errors/customErrors');
+const { CliOptionsValidateError, CliConfigValueValidateError, CliFilePathValidateError } = require('../errors/index');
 
 const cliValidation = (cliParameters) => {
     const isCliOptionsValid = validateCliOptions(cliParameters);

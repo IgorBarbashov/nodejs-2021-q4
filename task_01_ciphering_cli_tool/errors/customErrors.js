@@ -16,38 +16,7 @@ const errorHandler = (err) => {
     }
 };
 
-class CliOptionsValidateError extends CustomErrors {
-    constructor(message) {
-        super(message);
-        this.name = 'CliOptionsValidateError';
-    };
-};
-
-class CliConfigValueValidateError extends CustomErrors {
-    constructor(message) {
-        super(message);
-        this.name = 'CliConfigValueValidateError';
-    };
-};
-
-class CliFilePathValidateError extends CustomErrors {
-    constructor(message) {
-        super(message);
-        this.name = 'CliFilePathValidateError';
-    };
-};
-
-class PipelineError extends CustomErrors {
-    constructor(message) {
-        super(message);
-        this.name = 'PipelineError';
-    };
-};
-
 module.exports = {
     errorHandler,
-    CliOptionsValidateError,
-    CliConfigValueValidateError,
-    CliFilePathValidateError,
-    PipelineError
+    CustomErrors
 };
