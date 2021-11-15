@@ -1,7 +1,7 @@
 const cliConfigOption = {
     options: [ '-c', '--config' ],
     required: true,
-    valueSettings: { 'C0': 1, 'C1': -1, 'A': 13, 'R0': 8, 'R1': -8 }
+    valueSettings: { 'C0': -1, 'C1': 1, 'A': 13, 'R0': -8, 'R1': 8 }
 };
 
 const cliInputOption = {

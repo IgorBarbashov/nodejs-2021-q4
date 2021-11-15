@@ -1,8 +1,5 @@
-const ALPHABET_CONFIG = {
-    SYMBOL_COUNT: 26,
-    LOWER_CASE_ALPHABET_START_CHAR_CODE: 65,
-    UPPER_CASE_ALPHABET_START_CHAR_CODE: 97
-};
+const { CIPHER_MASK } = require('../constants/cipher');
+const { ALPHABET_CONFIG } = require('../constants/alphabet');
 
 const getBaseAlphabet = (startCharCode) => 
     Array(ALPHABET_CONFIG.SYMBOL_COUNT)
@@ -26,7 +23,7 @@ const upperCaseAlphabetIndexes = new Map(
     getAlphabetIndexes(upperCaseBaseAlphabet)
 );
 
-const cipher = (str, shift) => {
+const cipher = (str, shift, cipherMark) => {
     return [...str]
         .map(el => {
             if (!commonBaseAlphabet.includes(el)) {
@@ -43,8 +40,9 @@ const cipher = (str, shift) => {
                 targetAlphabetIndexes = upperCaseAlphabetIndexes;
             }
 
-            const newIndex = targetAlphabetIndexes.get(el) + shift;
-            return targetAlphabet[newIndex];
+            const shiftIndex = targetAlphabetIndexes.get(el) + shift;
+            const atbashIndex = ALPHABET_CONFIG.SYMBOL_COUNT * 2 - 1 - targetAlphabetIndexes.get(el);
+            return targetAlphabet[cipherMark === CIPHER_MASK.ATBASH ? atbashIndex : shiftIndex];
         })
         .join('');
 };
