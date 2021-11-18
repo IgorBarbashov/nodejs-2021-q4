@@ -29,6 +29,8 @@ CLI tool can accept 3 options (short alias and full name):
 - `-i, --input`: a path to input file
 - `-o, --output`: a path to output file
 
+## How to run Tests
+
 ## Developer environment
 
 - Node v16.13.0
