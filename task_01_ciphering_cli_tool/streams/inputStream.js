@@ -49,7 +49,9 @@ const createInputStream = (cliParameters) => {
         return process.stdin;
     }
     const inputFilePath = getCliOptionValue(CLI_INPUT_OPTION, cliParameters);
-    return new CustomInputStream(inputFilePath);
+    const customInputStream = new CustomInputStream(inputFilePath);
+    customInputStream.setEncoding('utf-8');
+    return customInputStream;
 };
 
 module.exports = {
