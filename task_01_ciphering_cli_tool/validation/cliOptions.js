@@ -1,4 +1,4 @@
-const { cliOptions } = require('../constants/cliParameters');
+const { CLI_OPTIONS } = require('../constants');
 
 const isOptionExistsInCli = (option, parameters) => {
     const { options } = option;
@@ -21,7 +21,7 @@ const validateCliOption = (option, parameters) => {
 };
 
 const validateCliOptions = (cliParameters) => {
-    return Object.values(cliOptions).every(option => validateCliOption(option, cliParameters));
+    return Object.values(CLI_OPTIONS).every(option => validateCliOption(option, cliParameters));
 };
 
 module.exports = {

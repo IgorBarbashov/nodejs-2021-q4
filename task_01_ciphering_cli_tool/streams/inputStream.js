@@ -1,10 +1,9 @@
 const { open, read, close } = require('fs');
 const { Readable } = require('stream');
-const { isOptionExistsInCli } = require('../validation/cliOptions');
-const { cliOptions: { cliInputOption } } = require('../constants/cliParameters');
-const { getCliOptionValue } = require('../utils/getCliOptionValue');
-const { OPEN_FILE_MODE } = require('../constants/streams');
-const { errorHandler, OpenFileError } = require('../errors/index');
+const { isOptionExistsInCli } = require('../validation');
+const { OPEN_FILE_MODE, CLI_OPTIONS: { CLI_INPUT_OPTION } } = require('../constants');
+const { getCliOptionValue } = require('../utils');
+const { errorHandler, OpenFileError } = require('../errors');
 
 class CustomInputStream extends Readable {
     constructor(filePath) {
@@ -45,11 +44,11 @@ class CustomInputStream extends Readable {
 }
 
 const createInputStream = (cliParameters) => {
-    const isInputOptionExistsInCli = isOptionExistsInCli(cliInputOption, cliParameters);
+    const isInputOptionExistsInCli = isOptionExistsInCli(CLI_INPUT_OPTION, cliParameters);
     if (!isInputOptionExistsInCli) {
         return process.stdin;
     }
-    const inputFilePath = getCliOptionValue(cliInputOption, cliParameters);
+    const inputFilePath = getCliOptionValue(CLI_INPUT_OPTION, cliParameters);
     return new CustomInputStream(inputFilePath);
 };
 

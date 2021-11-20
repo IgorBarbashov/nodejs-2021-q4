@@ -1,5 +1,4 @@
-const { CIPHER_MASK } = require('../constants/cipher');
-const { ALPHABET_CONFIG } = require('../constants/alphabet');
+const { CIPHER_MASK, ALPHABET_CONFIG } = require('../constants');
 
 const getBaseAlphabet = (startCharCode) => 
     Array(ALPHABET_CONFIG.SYMBOL_COUNT)

@@ -1,10 +1,9 @@
 const { open, write, close } = require('fs');
 const { Writable } = require('stream');
-const { isOptionExistsInCli } = require('../validation/cliOptions');
-const { cliOptions: { cliOutputOption } } = require('../constants/cliParameters');
-const { getCliOptionValue } = require('../utils/getCliOptionValue');
-const { OPEN_FILE_MODE } = require('../constants/streams');
-const { errorHandler, OpenFileError } = require('../errors/index');
+const { isOptionExistsInCli } = require('../validation');
+const { OPEN_FILE_MODE, CLI_OPTIONS: { CLI_OUTPUT_OPTION } } = require('../constants');
+const { getCliOptionValue } = require('../utils');
+const { errorHandler, OpenFileError } = require('../errors');
 
 class CustomOutputStream extends Writable {
     constructor(filePath) {
@@ -40,11 +39,11 @@ class CustomOutputStream extends Writable {
 }
 
 const createOutputStream = (cliParameters) => {
-    const isOutputOptionExistsInCli = isOptionExistsInCli(cliOutputOption, cliParameters);
+    const isOutputOptionExistsInCli = isOptionExistsInCli(CLI_OUTPUT_OPTION, cliParameters);
     if (!isOutputOptionExistsInCli) {
         return process.stdout;
     }
-    const outputFilePath = getCliOptionValue(cliOutputOption, cliParameters);
+    const outputFilePath = getCliOptionValue(CLI_OUTPUT_OPTION, cliParameters);
     return new CustomOutputStream(outputFilePath);
 };
 

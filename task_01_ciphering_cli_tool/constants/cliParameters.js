@@ -1,25 +1,25 @@
-const cliConfigOption = {
+const CLI_CONFIG_OPTION = {
     options: [ '-c', '--config' ],
     required: true,
     valueSettings: { 'C0': -1, 'C1': 1, 'A': 13, 'R0': -8, 'R1': 8 }
 };
 
-const cliInputOption = {
+const CLI_INPUT_OPTION = {
     options: [ '-i', '--input' ],
     required: false
 };
 
-const cliOutputOption = {
+const CLI_OUTPUT_OPTION = {
     options: [ '-o', '--output' ],
     required: false
 };
 
-const cliOptions = {
-    cliConfigOption,
-    cliInputOption,
-    cliOutputOption
+const CLI_OPTIONS = {
+    CLI_CONFIG_OPTION,
+    CLI_INPUT_OPTION,
+    CLI_OUTPUT_OPTION
 };
 
 module.exports = {
-    cliOptions
+    CLI_OPTIONS
 };

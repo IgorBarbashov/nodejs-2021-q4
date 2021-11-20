@@ -1,7 +1,7 @@
 const { Transform } = require('stream');
-const { cipher } = require('../cipher/cipher');
-const { getCliOptionValue } = require('../utils/getCliOptionValue');
-const { cliOptions: { cliConfigOption } } = require('../constants/cliParameters');
+const { cipher } = require('../cipher');
+const { getCliOptionValue } = require('../utils');
+const { CLI_OPTIONS: { CLI_CONFIG_OPTION } } = require('../constants');
 
 const createTransformStream = (shift, cipherMark) => {
     return new Transform({
@@ -12,9 +12,9 @@ const createTransformStream = (shift, cipherMark) => {
 };
 
 const createTransformStreamCollection = (cliParameters) => {
-    const configValue = getCliOptionValue(cliConfigOption, cliParameters);
+    const configValue = getCliOptionValue(CLI_CONFIG_OPTION, cliParameters);
     const configArray = configValue.split('-');
-    const { valueSettings } = cliConfigOption;
+    const { valueSettings } = CLI_CONFIG_OPTION;
     const transformStreamCollection = [];
     configArray.forEach(el => {
         const transformStream = createTransformStream(valueSettings[el], el[0]);
