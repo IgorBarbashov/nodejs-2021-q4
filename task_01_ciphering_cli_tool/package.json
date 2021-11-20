@@ -1,0 +1,24 @@
+{
+  "name": "ciphering_cli_tool",
+  "version": "1.0.0",
+  "description": "Ciphering CLI tool - NodeJS application",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IgorBarbashov/nodejs-2021-q4.git"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "javascript"
+  ],
+  "author": "Igor Barbashov <bis200705@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IgorBarbashov/nodejs-2021-q4/issues"
+  },
+  "homepage": "https://github.com/IgorBarbashov/nodejs-2021-q4#readme"
+}
