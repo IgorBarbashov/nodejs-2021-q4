@@ -1,19 +1,31 @@
 # Ciphering CLI tool
+
+* [About](#about)
+* [How to install](#how-to-install)
+* [How to use and run tests](#how-to-use-and-run-tests)
+* [Description of options](#description-of-options)
+* [Usage example](#usage-example)
+* [Developer environment and instruments](#developer-environment-and-instruments)
+
+## About
 CLI tool that will encode and decode a text by 3 substitution ciphers
 
-[Task page](https://github.com/rolling-scopes-school/basic-nodejs-course/blob/master/descriptions/ciphering-cli-tool.md)
+- [Task 1 page - Ciphering CLI Tool](https://github.com/rolling-scopes-school/basic-nodejs-course/blob/master/descriptions/ciphering-cli-tool.md)
 
-[Branch and folder name: task_01_ciphering_cli_tool](https://github.com/IgorBarbashov/nodejs-2021-q4/tree/task_01_ciphering_cli_tool/task_01_ciphering_cli_tool)
+- [Task 2 page - Testing](https://github.com/rolling-scopes-school/basic-nodejs-course/blob/master/descriptions/testing.md)
 
 ## How to install
-- Install Node.js
+- Install Node.js 16.13.0 or higher
 - Clone this repository
-- Go to project's folder
+- Go to **task_01_ciphering_cli_tool** folder
+- Install dependencies by command `npm i`
 
-## How to use
-Command string: `node index options`
+## How to use and run tests
+- Command string for run tool: `node index options`
+- Command string for run tests: `npm run test`
 
-CLI tool can accept 3 options (short alias and full name):
+## Description of options
+CLI tool can accept 3 `options` (short alias and full name):
 
 - `-c, --config`: config for ciphers Config is a string with pattern **{XY(-)}n**, where:
 
@@ -29,8 +41,50 @@ CLI tool can accept 3 options (short alias and full name):
 - `-i, --input`: a path to input file
 - `-o, --output`: a path to output file
 
-## How to run Tests
+## Usage example
+```bash
+$ node index -c "C1-C1-R0-A" -i "./input.txt" -o "./output.txt"
+```
 
-## Developer environment
+> input.txt
+> `This is secret. Message about "_" symbol!`
 
-- Node v16.13.0
+> output.txt
+> `Myxn xn nbdobm. Tbnnfzb ferlm "_" nhteru!`
+
+```bash
+$ node index -c "C1-C0-A-R1-R0-A-R0-R0-C1-A" -i "./input.txt" -o "./output.txt"
+```
+
+> input.txt
+> `This is secret. Message about "_" symbol!`
+
+> output.txt
+> `Vhgw gw wkmxkv. Ckwwoik onauv "_" wqcnad!`
+
+```bash
+$ node index -c "A-A-A-R1-R0-R0-R0-C1-C1-A" -i "./input.txt" -o "./output.txt"
+```
+
+> input.txt
+> `This is secret. Message about "_" symbol!`
+
+> output.txt
+> `Hvwg wg gsqfsh. Asggous opcih "_" gmapcz!`
+
+```bash
+$ node index -c "C1-R1-C0-C0-A-R0-R1-R1-A-C1" -i "./input.txt" -o "./output.txt"
+```
+
+> input.txt
+> `This is secret. Message about "_" symbol!`
+
+> output.txt
+> `This is secret. Message about "_" symbol!`
+
+## Developer environment and instruments
+
+- Node 16.13.0
+- Npm 8.1.0
+- Jest
+- ESLint
