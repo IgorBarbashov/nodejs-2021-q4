@@ -1,7 +1,8 @@
 const { open, read, close } = require('fs');
 const { Readable } = require('stream');
+const { resolve } = require('path');
 const { isOptionExistsInCli } = require('../validation');
-const { OPEN_FILE_MODE, CLI_OPTIONS: { CLI_INPUT_OPTION } } = require('../constants');
+const { OPEN_FILE_MODE, CLI_OPTIONS: { CLI_INPUT_OPTION }, DIRNAME } = require('../constants');
 const { getCliOptionValue } = require('../utils');
 const { errorHandler, OpenFileError } = require('../errors');
 
@@ -48,7 +49,9 @@ const createInputStream = (cliParameters) => {
     if (!isInputOptionExistsInCli) {
         return process.stdin;
     }
-    const inputFilePath = getCliOptionValue(CLI_INPUT_OPTION, cliParameters);
+
+    const rawInputFilePath = getCliOptionValue(CLI_INPUT_OPTION, cliParameters);
+    const inputFilePath = resolve(DIRNAME, rawInputFilePath);
     const customInputStream = new CustomInputStream(inputFilePath);
     customInputStream.setEncoding('utf-8');
     return customInputStream;

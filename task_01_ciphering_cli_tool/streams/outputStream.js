@@ -1,7 +1,8 @@
 const { open, write, close } = require('fs');
 const { Writable } = require('stream');
+const { resolve } = require('path');
 const { isOptionExistsInCli } = require('../validation');
-const { OPEN_FILE_MODE, CLI_OPTIONS: { CLI_OUTPUT_OPTION } } = require('../constants');
+const { OPEN_FILE_MODE, CLI_OPTIONS: { CLI_OUTPUT_OPTION }, DIRNAME } = require('../constants');
 const { getCliOptionValue } = require('../utils');
 const { errorHandler, OpenFileError } = require('../errors');
 
@@ -43,7 +44,9 @@ const createOutputStream = (cliParameters) => {
     if (!isOutputOptionExistsInCli) {
         return process.stdout;
     }
-    const outputFilePath = getCliOptionValue(CLI_OUTPUT_OPTION, cliParameters);
+
+    const rawOutputFilePath = getCliOptionValue(CLI_OUTPUT_OPTION, cliParameters);
+    const outputFilePath = resolve(DIRNAME, rawOutputFilePath);
     return new CustomOutputStream(outputFilePath);
 };
 
