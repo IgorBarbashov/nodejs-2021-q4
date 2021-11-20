@@ -90,4 +90,4 @@ $ node index -c "C1-R1-C0-C0-A-R0-R1-R1-A-C1" -i "./input.txt" -o "./output.txt"
 - Node 16.13.0
 - Npm 8.1.0
 - Jest 27.3.1
-- ESLint
+- ESLint 8.2.0
