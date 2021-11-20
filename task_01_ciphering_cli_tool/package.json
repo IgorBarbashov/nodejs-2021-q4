@@ -4,7 +4,9 @@
   "description": "Ciphering CLI tool - NodeJS application",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/IgorBarbashov/nodejs-2021-q4/issues"
   },
-  "homepage": "https://github.com/IgorBarbashov/nodejs-2021-q4#readme"
+  "homepage": "https://github.com/IgorBarbashov/nodejs-2021-q4#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
 }

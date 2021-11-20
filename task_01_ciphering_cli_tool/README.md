@@ -22,7 +22,10 @@ CLI tool that will encode and decode a text by 3 substitution ciphers
 
 ## How to use and run tests
 - Command string for run tool: `node index options`
-- Command string for run tests: `npm run test`
+- Command string for tests:
+  - run tests: `npm run test`
+  - run tests in watch mode: `npm run test:watch`
+  - get information about tests coverage: `npm run test:coverage`
 
 ## Description of options
 CLI tool can accept 3 `options` (short alias and full name):
@@ -86,5 +89,5 @@ $ node index -c "C1-R1-C0-C0-A-R0-R1-R1-A-C1" -i "./input.txt" -o "./output.txt"
 
 - Node 16.13.0
 - Npm 8.1.0
-- Jest
+- Jest 27.3.1
 - ESLint
