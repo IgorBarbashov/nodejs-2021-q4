@@ -47,5 +47,8 @@ const cipher = (str, shift, cipherMark) => {
 };
 
 module.exports = {
+    getBaseAlphabet,
+    getExtendedAlphabet,
+    getAlphabetIndexes,
     cipher
 };
