@@ -11,7 +11,7 @@ class CustomOutputStream extends Writable {
         super();
         this.filePath = filePath;
         this.fd = null;
-    };
+    }
 
     _construct(callback) {
         open(this.filePath, OPEN_FILE_MODE.WRITABLE_STREAM, (err, fd) => {
@@ -21,23 +21,23 @@ class CustomOutputStream extends Writable {
                 this.fd = fd;
                 callback();
             }
-        })
-    };
+        });
+    }
 
     _write(chunk, _, callback) {
         write(this.fd, chunk, callback);
-    };
+    }
 
     _destroy(error, callback) {
         if (this.fd) {
             close(this.fd, (err) => {
                 callback(err || error);
-            })
+            });
         } else {
             callback(error);
         }
-    };
-};
+    }
+}
 
 const createOutputStream = (cliParameters) => {
     const isOutputOptionExistsInCli = isOptionExistsInCli(cliOutputOption, cliParameters);

@@ -9,4 +9,4 @@ try {
     createPipeline(cliParameters);
 } catch (err) {
     errorHandler(err);
-};
+}

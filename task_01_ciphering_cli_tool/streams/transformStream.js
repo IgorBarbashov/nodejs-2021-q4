@@ -1,4 +1,4 @@
-const { Transform } = require("stream");
+const { Transform } = require('stream');
 const { cipher } = require('../cipher/cipher');
 const { getCliOptionValue } = require('../utils/getCliOptionValue');
 const { cliOptions: { cliConfigOption } } = require('../constants/cliParameters');

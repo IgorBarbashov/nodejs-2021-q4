@@ -4,7 +4,7 @@ const { ALPHABET_CONFIG } = require('../constants/alphabet');
 const getBaseAlphabet = (startCharCode) => 
     Array(ALPHABET_CONFIG.SYMBOL_COUNT)
         .fill(startCharCode)
-        .map((el, i) => String.fromCharCode(el + i))
+        .map((el, i) => String.fromCharCode(el + i));
 
 const getExtendedAlphabet = (baseAlphabet, count = 3) => baseAlphabet.join('').repeat(count).split('');
 const getAlphabetIndexes = (baseAlphabet) => baseAlphabet.map((el, i) => [el, ALPHABET_CONFIG.SYMBOL_COUNT + i]);

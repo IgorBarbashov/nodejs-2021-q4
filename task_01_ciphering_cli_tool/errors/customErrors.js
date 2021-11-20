@@ -2,9 +2,9 @@ class CustomErrors extends Error {
     constructor(message) {
         super(message);
         this.isCustom = true;
-        this.message = `Ciphering CLI tool error: ${message ? message : 'unknown'}`
-    };
-};
+        this.message = `Ciphering CLI tool error: ${message ? message : 'unknown'}`;
+    }
+}
 
 const errorHandler = (err) => {
     const { isCustom } = err;

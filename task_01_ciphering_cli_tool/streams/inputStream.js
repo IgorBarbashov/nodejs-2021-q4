@@ -11,7 +11,7 @@ class CustomInputStream extends Readable {
         super();
         this.filePath = filePath;
         this.fd = null;
-    };
+    }
 
     _construct(callback) {
         open(this.filePath, OPEN_FILE_MODE.READABLE_STREAM, (err, fd) => {
@@ -22,7 +22,7 @@ class CustomInputStream extends Readable {
                 callback();
             }
         });
-    };
+    }
 
     _read(n) {
         const buf = Buffer.alloc(n);
@@ -33,15 +33,15 @@ class CustomInputStream extends Readable {
                 this.push(bytesRead > 0 ? buf.slice(0, bytesRead) : null);
             }
         });
-    };
+    }
 
     _destroy(error, callback) {
         if (this.fd) {
-            close(this.fd, (err) => callback(err || error))
+            close(this.fd, (err) => callback(err || error));
         } else {
-            callback(err);
+            callback(error);
         }
-    };
+    }
 }
 
 const createInputStream = (cliParameters) => {
