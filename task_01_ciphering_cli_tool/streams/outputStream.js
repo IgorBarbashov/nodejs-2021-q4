@@ -17,6 +17,7 @@ class CustomOutputStream extends Writable {
         open(this.filePath, OPEN_FILE_MODE.WRITABLE_STREAM, (err, fd) => {
             if (err) {
                 errorHandler(new OpenFileError(err.message));
+                callback(err);
             } else {
                 this.fd = fd;
                 callback();
@@ -51,5 +52,6 @@ const createOutputStream = (cliParameters) => {
 };
 
 module.exports = {
-    createOutputStream
+    createOutputStream,
+    CustomOutputStream
 };

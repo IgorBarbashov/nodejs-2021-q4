@@ -58,5 +58,6 @@ const createInputStream = (cliParameters) => {
 };
 
 module.exports = {
-    createInputStream
+    createInputStream,
+    CustomInputStream
 };
