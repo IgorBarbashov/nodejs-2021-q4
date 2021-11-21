@@ -1,5 +1,5 @@
 const { getCliOptionValue } = require('../utils');
-    const { CLI_OPTIONS: { CLI_CONFIG_OPTION } } = require('../constants');
+const { CLI_OPTIONS: { CLI_CONFIG_OPTION } } = require('../constants');
 
 const validateCliConfigValue = (cliParameters) => {
     const { valueSettings } = CLI_CONFIG_OPTION;
