@@ -5,7 +5,7 @@ const { CLI_OPTIONS: { CLI_CONFIG_OPTION } } = require('../constants');
 
 const createTransformStream = (shift, cipherMark) => {
     return new Transform({
-        transform(chunk, _encoding, callback) {
+        transform(chunk, _, callback) {
             callback(null, cipher(String(chunk), shift, cipherMark));
         }
     });
@@ -24,5 +24,6 @@ const createTransformStreamCollection = (cliParameters) => {
 };
 
 module.exports = {
-    createTransformStreamCollection
+    createTransformStreamCollection,
+    createTransformStream
 };

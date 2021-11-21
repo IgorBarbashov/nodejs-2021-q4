@@ -1,26 +1,23 @@
-const { pipeline } = require('stream');
+const { pipeline } = require('stream/promises');
 const { createInputStream } = require('./inputStream');
 const { createOutputStream } = require('./outputStream');
 const { createTransformStreamCollection } = require('./transformStream');
 const { errorHandler, PipelineError } = require('../errors');
 
-const createPipeline = (cliParameters) => {
-    const inputStream = createInputStream(cliParameters);
-    const outputStream = createOutputStream(cliParameters);
-    const transformStreamCollection = createTransformStreamCollection(cliParameters);
+const createPipeline = async (cliParameters, spyPipeline = pipeline) => {
+    try {
+        const inputStream = createInputStream(cliParameters);
+        const outputStream = createOutputStream(cliParameters);
+        const transformStreamCollection = createTransformStreamCollection(cliParameters);
 
-    pipeline(
-        inputStream,
-        ...transformStreamCollection,
-        outputStream,
-        (err) => {
-            if (err) {
-                errorHandler(new PipelineError(err.message));
-            } else {
-                process.stdout.write('Pipeline succeeded.');
-            }
-        }
-    );
+        await spyPipeline(
+            inputStream,
+            ...transformStreamCollection,
+            outputStream
+        );
+    } catch (err) {
+        errorHandler(new PipelineError(err.message));
+    }
 };
 
 module.exports = {

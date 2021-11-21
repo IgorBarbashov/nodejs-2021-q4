@@ -21,9 +21,9 @@ const cliParametersLongNotation = [
 ];
 
 const cliParametersWithoutValidOptions = [
-    '--c', 'C1-R0-A-C1-R1-A-A',
-    '--o', 'no_exists_file.txt',
-    '--i', 'text.txt'
+    '-co', 'C1-R0-A-C1-R1-A-A',
+    '-ou', 'no_exists_file.txt',
+    '-in', 'text.txt'
 ];
 
 describe('Function isOptionExistsInCli', () => {
@@ -39,7 +39,7 @@ describe('Function isOptionExistsInCli', () => {
         expect(isOptionExistsInCli(CLI_OUTPUT_OPTION, cliParametersLongNotation)).toBeTruthy();
     });
 
-    it('should return false  if given option not exists in cli', () => {
+    it('should return false if given option not exists in cli', () => {
         expect(isOptionExistsInCli(CLI_CONFIG_OPTION, cliParametersWithoutValidOptions)).toBeFalsy();
         expect(isOptionExistsInCli(CLI_INPUT_OPTION, cliParametersWithoutValidOptions)).toBeFalsy();
         expect(isOptionExistsInCli(CLI_OUTPUT_OPTION, cliParametersWithoutValidOptions)).toBeFalsy();
