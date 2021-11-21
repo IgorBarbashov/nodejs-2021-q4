@@ -26,5 +26,8 @@ const validateCliOptions = (cliParameters) => {
 
 module.exports = {
     isOptionExistsInCli,
-    validateCliOptions
+    validateCliOptions,
+    validateCliOption,
+    isOptionDuplicateInCli,
+    isCliOptionRequiredConditionValid
 };
