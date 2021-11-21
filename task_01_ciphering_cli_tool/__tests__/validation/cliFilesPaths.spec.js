@@ -13,4 +13,11 @@ describe('Function validateFilePath', () => {
         expect(validateFilePath(CLI_INPUT_OPTION, cliParametersWithNotExistsFile)).toBeFalsy();
         expect(validateFilePath(CLI_OUTPUT_OPTION, cliParametersWithNotExistsFile)).toBeFalsy();
     });
+
+    it('should return true if given option not exists in cli', () => {
+        const cliParametersWithNotInputOption = ['-c', 'C1-C0-A-R0-A-R0-R0-C1-A', '-o', '_output.txt'];
+        const cliParametersWithNotOutputOption = ['-c', 'C1-C0-A-R0-A-R0-R0-C1-A', '-i', '_input.txt'];
+        expect(validateFilePath(CLI_INPUT_OPTION, cliParametersWithNotInputOption)).toBeTruthy();
+        expect(validateFilePath(CLI_OUTPUT_OPTION, cliParametersWithNotOutputOption)).toBeTruthy();
+    });
 });
