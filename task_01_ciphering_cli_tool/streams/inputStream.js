@@ -1,17 +1,17 @@
 const { open, read, close } = require('fs');
 const { Readable } = require('stream');
-const { isOptionExistsInCli } = require('../validation/cliOptions');
-const { cliOptions: { cliInputOption } } = require('../constants/cliParameters');
-const { getCliOptionValue } = require('../utils/getCliOptionValue');
-const { OPEN_FILE_MODE } = require('../constants/streams');
-const { errorHandler, OpenFileError } = require('../errors/index');
+const { resolve } = require('path');
+const { isOptionExistsInCli } = require('../validation');
+const { OPEN_FILE_MODE, CLI_OPTIONS: { CLI_INPUT_OPTION }, DIRNAME } = require('../constants');
+const { getCliOptionValue } = require('../utils');
+const { errorHandler, OpenFileError } = require('../errors');
 
 class CustomInputStream extends Readable {
     constructor(filePath) {
         super();
         this.filePath = filePath;
         this.fd = null;
-    };
+    }
 
     _construct(callback) {
         open(this.filePath, OPEN_FILE_MODE.READABLE_STREAM, (err, fd) => {
@@ -22,7 +22,7 @@ class CustomInputStream extends Readable {
                 callback();
             }
         });
-    };
+    }
 
     _read(n) {
         const buf = Buffer.alloc(n);
@@ -33,26 +33,31 @@ class CustomInputStream extends Readable {
                 this.push(bytesRead > 0 ? buf.slice(0, bytesRead) : null);
             }
         });
-    };
+    }
 
     _destroy(error, callback) {
         if (this.fd) {
-            close(this.fd, (err) => callback(err || error))
+            close(this.fd, (err) => callback(err || error));
         } else {
-            callback(err);
+            callback(error);
         }
-    };
+    }
 }
 
 const createInputStream = (cliParameters) => {
-    const isInputOptionExistsInCli = isOptionExistsInCli(cliInputOption, cliParameters);
+    const isInputOptionExistsInCli = isOptionExistsInCli(CLI_INPUT_OPTION, cliParameters);
     if (!isInputOptionExistsInCli) {
         return process.stdin;
     }
-    const inputFilePath = getCliOptionValue(cliInputOption, cliParameters);
-    return new CustomInputStream(inputFilePath);
+
+    const rawInputFilePath = getCliOptionValue(CLI_INPUT_OPTION, cliParameters);
+    const inputFilePath = resolve(DIRNAME, rawInputFilePath);
+    const customInputStream = new CustomInputStream(inputFilePath);
+    customInputStream.setEncoding('utf-8');
+    return customInputStream;
 };
 
 module.exports = {
-    createInputStream
+    createInputStream,
+    CustomInputStream
 };

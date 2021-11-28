@@ -1,6 +1,6 @@
-const { cliValidation } = require('./validation/index');
-const { createPipeline } = require('./streams/createPipeline');
-const { errorHandler } = require('./errors/index');
+const { cliValidation } = require('./validation');
+const { createPipeline } = require('./streams');
+const { errorHandler } = require('./errors');
 
 const cliParameters = process.argv.slice(2);
 
@@ -9,4 +9,4 @@ try {
     createPipeline(cliParameters);
 } catch (err) {
     errorHandler(err);
-};
+}

@@ -1,0 +1,33 @@
+{
+  "name": "ciphering_cli_tool",
+  "version": "1.0.0",
+  "description": "Ciphering CLI tool - NodeJS application",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint **/*.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:watch-all": "jest --watchAll",
+    "test:coverage": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IgorBarbashov/nodejs-2021-q4.git"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "javascript"
+  ],
+  "author": "Igor Barbashov <bis200705@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IgorBarbashov/nodejs-2021-q4/issues"
+  },
+  "homepage": "https://github.com/IgorBarbashov/nodejs-2021-q4#readme",
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "eslint-plugin-jest": "^25.2.4",
+    "jest": "^27.3.1"
+  }
+}
